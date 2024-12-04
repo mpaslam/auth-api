@@ -1,14 +1,18 @@
 const express = require('express');
 const app = express();
 const port = 2000;
+const connectDB = require('./config/db_connect');
+const User = require('./model/users');
 
 app.use(express.json()); // Middleware to parse JSON request bodies
-
+connectDB();
 // Temporary in-memory array to store user data
-const users = [];
 
 // POST route for user registration
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
+    console.log('====================================');
+    console.log(req.body);
+    console.log('====================================');
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -16,10 +20,15 @@ app.post('/register', (req, res) => {
     }
 
     // Simulate saving user data by pushing it into the users array
-    const user = { username, password };
-    users.push(user);
+    const newUser = new User({
+        username,
+        password
+    });
 
-    res.status(201).json({ message: 'User registered successfully', user });
+    await newUser.save();
+
+
+    res.status(201).json({ message: 'User registered successfully', newUser });
 });
 
 
