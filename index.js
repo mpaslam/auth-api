@@ -19,6 +19,10 @@ app.use("/api",require('./routes/auth/auth'));
 app.use("/api",require('./routes/user/user'));
 app.use("/api",require('./routes/course/createCourse'));
 app.use("/api",require('./routes/course/getCourses'));
+app.use("/api",require('./routes/course/updateCourse'));
+app.use("/api",require('./routes/course/deleteCourse'));
+
+
 
 
 // POST route for user registration

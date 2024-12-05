@@ -1,8 +1,8 @@
-const { CourseCreation } = require("../../controllers/courses/createCourses");
+    const { CourseCreation } = require("../../controllers/courses/createCourses");
 
 
-const router =require("express").Router();
-router.post('/createCourse',CourseCreation)
+    const router =require("express").Router();
+    router.post('/createCourse',CourseCreation)
 
 
-module.exports = router
+    module.exports = router
